@@ -12,9 +12,9 @@ exports.createUser = (req, res) => {
 
 }
 exports.userLogin = (req, res) => {
-    const userName = req.body['email'];
+    const email = req.body['email'];
     const password = req.body['password'];
-    userModel.find({ userName: userName, password: password }, (error, data) => {
+    userModel.find({ $and: [{ email: email }, { password: password }] }, (error, data) => {
         if (error) {
             res.status(401).json({ status: "fail", data: error })
         } else {
