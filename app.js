@@ -33,7 +33,7 @@ app.use(hpp());
 app.use(xssClean());
 // app.use(limiter);
 
-// mongodb connections membership123
+// mongodb connections 
 
 const mongoose = require('mongoose')
 
