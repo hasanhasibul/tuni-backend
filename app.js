@@ -40,7 +40,6 @@ const mongoose = require('mongoose')
 const URI = "mongodb+srv://membership:membership123@cluster0.ezexp.mongodb.net/tunicalabsMedia?retryWrites=true&w=majority";
 const OPTION = { user: '', pass: '', autoIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
 mongoose.connect(URI, { useNewUrlParser: true }, OPTION, (error) => {
-    console.log("object");
     if (error) {
         console.log(error);
     }
