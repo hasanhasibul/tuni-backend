@@ -12,6 +12,7 @@ router.get('/viewStudent', studentController.viewStudent);
 router.post('/updateStudent', studentController.updateStudent);
 router.post('/deleteStudent', studentController.deleteStudent);
 router.post('/readStudentById', studentController.readStudentById);
+router.post('/searchStudent', studentController.searchStudent);
 
 // Student api end point
 

@@ -59,12 +59,9 @@ exports.updateStudent = (req, res) => {
     const sclass = req.body['sclass'];
     const division = req.body['division'];
     const status = req.body['status'];
-    const id = req.body['id'];
-
     const milliDay = 1000 * 60 * 60 * 24; // a day in milliseconds;
     const ageInDays = (new Date() - new Date(dob)) / milliDay;
     const ageInYears = Math.floor(ageInDays / 365);
-
     const reqBody = {
         name: name,
         dob: ageInYears,
@@ -92,4 +89,22 @@ exports.deleteStudent = (req, res) => {
             res.status(201).json({ status: "delete success", data: data })
         }
     })
+}
+
+exports.searchStudent = (req, res) => {
+    const name = req.body['name'];
+    const age = req.body['age'];
+    const division = req.body['division'];
+    const sclass = req.body['sclass'];
+    const school = req.body['school'];
+    SudentsModel.aggregate([
+        {
+            $match: { $or: [{ name: name }, { dob: age }, { division: division }, { sclass: sclass }, { school: school }] }
+        }
+    ]).then(response => {
+        res.status(201).json({ status: "success", data: response })
+    })
+        .catch((error) => {
+            res.status(401).json({ status: "fail", data: error })
+        })
 }
