@@ -53,6 +53,7 @@ exports.readStudentById = (req, res) => {
 }
 
 exports.updateStudent = (req, res) => {
+    const id = req.body['id'];
     const name = req.body['name'];
     const dob = req.body['dob'];
     const school = req.body['school'];
